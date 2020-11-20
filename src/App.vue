@@ -6,7 +6,8 @@
 import './assets/scss/app.scss';
 
 export default {
-	name: 'App'
+	name: 'App',
+	components: {}
 };
 </script>
 
