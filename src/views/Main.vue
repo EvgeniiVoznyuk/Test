@@ -2,14 +2,12 @@
 	<div id="app">
 		<AppHeader />
 		<div class="app__content content">
-			<div class="container">
-				<div class="router-link" v-on:click="showUsers" v-if="!isShowUsers">
-					<router-link to="/users">
-						Перейти к Table
-					</router-link>
-				</div>
-				<router-view />
+			<div class="router-link" v-on:click="showUsers" v-if="!isShowUsers">
+				<router-link to="/users">
+					<!-- Перейти к Table -->
+				</router-link>
 			</div>
+			<router-view />
 		</div>
 	</div>
 </template>
@@ -45,7 +43,6 @@ export default Vue.extend({
 	methods: {
 		showUsers() {
 			this.isShowUsers = true;
-			console.log(this.isShowUsers);
 		}
 	}
 });

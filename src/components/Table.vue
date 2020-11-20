@@ -6,12 +6,23 @@
 		dataKey="id"
 		:rowsPerPageOptions="[10, 20, 50, 100]"
 	>
-		<Column
-			v-model="selectedUser"
-			selectionMode="multiple"
-			headerStyle="width: 3em"
-			@click="console.log(selectedUser)"
-		>
+		<Column headerStyle="width: 3em">
+			<template #header>
+				<input
+					type="checkbox"
+					:value="'allUsers'"
+					v-model="selectedUsers"
+					@click="selectAllUsers"
+				/>
+			</template>
+			<template #body="slotProps">
+				<input
+					type="checkbox"
+					:value="slotProps.data.id"
+					v-model="selectedUsers"
+					@click="showTest"
+				/>
+			</template>
 		</Column>
 		<Column
 			v-for="col of columns"
@@ -46,7 +57,7 @@ export default Vue.extend({
 	},
 	data() {
 		return {
-			selectedUser: null,
+			selectedUsers: [],
 			columns: [
 				{ field: 'name', header: 'Name' },
 				{ field: 'userName', header: 'UserName' },
@@ -56,19 +67,15 @@ export default Vue.extend({
 		};
 	},
 	methods: {
-		onRowSelect(event) {
-			this.$toast.add({
-				severity: 'info',
-				detail: `Name: ' + ${event.data.name}`,
-				life: 3000
-			});
+		selectAllUsers() {
+			if (!this.selectedUsers.includes('allUsers')) {
+				this.selectedUsers = this.users.map(user => user.id);
+			} else {
+				this.selectedUsers = [];
+			}
 		},
-		onRowUnselect(event) {
-			this.$toast.add({
-				severity: 'warn',
-				detail: `Name: ' + ${event.data.name}`,
-				life: 3000
-			});
+		showTest() {
+			console.log(this.selectedUsers);
 		}
 	}
 });

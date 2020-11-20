@@ -1,15 +1,20 @@
 <template>
-	<Table :users="users" />
+	<div class="container">
+		<Toolbar />
+		<Table :users="users" />
+	</div>
 </template>
 
 <script lang="">
 import Vue from 'vue';
+import Toolbar from '../components/Toolbar.vue';
 import Table from '../components/Table.vue';
 
 export default Vue.extend({
-	name: 'Main',
+	name: 'Users',
 	components: {
-		Table
+		Table,
+		Toolbar
 	},
 	created() {
 		fetch('/api/users')
