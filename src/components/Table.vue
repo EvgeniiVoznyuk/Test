@@ -30,6 +30,8 @@
 			:field="col.field"
 			:header="col.header"
 			:key="col.field"
+			v-on:contextmenu.prevent="selectAllUsers"
+			@dblclick="selectAllUsers"
 		>
 		</Column>
 		<Column

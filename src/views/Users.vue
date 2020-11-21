@@ -1,7 +1,7 @@
 <template>
 	<div class="container">
 		<Toolbar v-on:add-user="addUser" v-on:set-query="setQuery" />
-		<Table :users="users" />
+		<Table :users="filtredUsers()" />
 	</div>
 </template>
 
@@ -38,11 +38,18 @@ export default Vue.extend({
 				id: this.users.length + 1
 			};
 			this.users.unshift(newUser);
+		},
+		setQuery(query) {
+			this.searchQuery = query;
+		},
+		filtredUsers() {
+			return this.users.filter(
+				({ name, userName, email }) =>
+					name.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+					userName.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+					email.toLowerCase().includes(this.searchQuery.toLowerCase())
+			);
 		}
-	},
-	setQuery(query) {
-		this.searchQuery = query;
-		console.log(this.searchQuery);
 	}
 });
 </script>
