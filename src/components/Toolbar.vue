@@ -1,7 +1,7 @@
 <template>
 	<Toolbar class="p-mb-4 p-mt-4">
 		<template slot="left">
-			<AddUser />
+			<AddUser v-on:add-user="addUser" />
 		</template>
 		<template slot="right">
 			<Button icon="pi pi-times" class="p-button-danger" />
@@ -26,8 +26,8 @@ export default {
 		};
 	},
 	methods: {
-		togleModal() {
-			this.displayModal = !this.displayModal;
+		addUser(user) {
+			this.$emit('add-user', user);
 		}
 	}
 };

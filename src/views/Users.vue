@@ -1,6 +1,6 @@
 <template>
 	<div class="container">
-		<Toolbar />
+		<Toolbar v-on:add-user="addUser" />
 		<Table :users="users" />
 	</div>
 </template>
@@ -27,6 +27,16 @@ export default Vue.extend({
 		return {
 			users: []
 		};
+	},
+	methods: {
+		addUser(user) {
+			const newUser = {
+				...user,
+				role: user.role.name,
+				id: this.users.length + 1
+			};
+			this.users.unshift(newUser);
+		}
 	}
 });
 </script>

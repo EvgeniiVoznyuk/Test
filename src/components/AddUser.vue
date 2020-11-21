@@ -24,11 +24,64 @@
 					/>
 				</div>
 				<div class="modal__body p-m-2">
-					<form>
+					<form @submit.prevent="onSubmit" class="modal__form p-mb-4">
 						<span class="modal__span">
-							<label for="username">Username</label>
-							<InputText id="username" type="text" v-model="value" />
+							<label for="name">Name</label>
+							<InputText
+								id="name"
+								type="text"
+								v-model="user.name"
+								v-bind:class="{ 'p-invalid': user.name === '' }"
+							/>
+							<small id="name" class="p-invalid" v-if="user.name === ''">
+								Name is required
+							</small>
 						</span>
+						<span class="modal__span">
+							<label for="userName">User Name</label>
+							<InputText
+								id="userName"
+								type="text"
+								v-model="user.userName"
+								v-bind:class="{ 'p-invalid': user.userName === '' }"
+							/>
+							<small id="name" class="p-invalid" v-if="user.userName === ''">
+								Username is required.
+							</small>
+						</span>
+						<span class="modal__span">
+							<label for="email">Email</label>
+							<InputText
+								id="email"
+								type="text"
+								v-model="user.email"
+								v-bind:class="{ 'p-invalid': user.email === '' }"
+							/>
+							<small id="name" class="p-invalid" v-if="user.email === ''">
+								Username is required.
+							</small>
+						</span>
+						<div class="modal__span">
+							<label for="email">Role(s)</label>
+							<Dropdown
+								v-model="user.role"
+								:options="roles"
+								optionLabel="name"
+								placeholder="Admin"
+							/>
+						</div>
+						<div class="modal__buttons p-mt-4">
+							<button
+								class="modal__button modal__button--cancel"
+								@click="toggleModal"
+								type="button"
+							>
+								Cancel
+							</button>
+							<button class="modal__button modal__button--create" type="submit">
+								Create User
+							</button>
+						</div>
 					</form>
 				</div>
 			</div>
@@ -40,23 +93,55 @@
 import SplitButton from 'primevue/splitbutton';
 import Dialog from 'primevue/dialog';
 import InputText from 'primevue/inputtext';
+import Dropdown from 'primevue/dropdown';
 
 export default {
 	name: 'AddUser',
 	components: {
 		SplitButton,
 		Dialog,
-		InputText
+		InputText,
+		Dropdown
 	},
 	data() {
 		return {
 			button: null,
-			displayModal: false
+			displayModal: false,
+			user: {
+				name: null,
+				userName: null,
+				email: null,
+				role: 'Admin'
+			},
+			roles: [
+				{ name: 'Admin' },
+				{ name: 'User' },
+				{ name: 'Modeler' },
+				{ name: 'Modeler' }
+			]
 		};
 	},
 	methods: {
 		toggleModal() {
 			this.displayModal = !this.displayModal;
+		},
+		onSubmit() {
+			if (Object.values(this.user).includes(null)) {
+				Object.entries(this.user).forEach(element => {
+					if (element[1] === null) {
+						this.user[element[0]] = '';
+					}
+				});
+			} else {
+				this.$emit('add-user', this.user);
+				this.user = {
+					name: null,
+					userName: null,
+					email: null,
+					role: 'Admin'
+				};
+				this.toggleModal();
+			}
 		}
 	}
 };
@@ -80,15 +165,37 @@ export default {
 		border: none;
 		color: #000;
 	}
-	&__body {
+	&__form {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
+		gap: 15px;
 	}
 	&__span {
 		display: flex;
 		gap: 10px;
 		flex-direction: column;
+	}
+	&__buttons {
+		display: flex;
+		justify-content: space-around;
+	}
+	&__button {
+		width: 45%;
+		height: 40px;
+		color: #fff;
+		font-size: 16px;
+		border-radius: 6px;
+		transition: box-shadow 0.5s;
+		&--cancel {
+			background-color: #000;
+		}
+		&--create {
+			background-color: #2490a8;
+		}
+		&:hover {
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+		}
 	}
 }
 </style>
