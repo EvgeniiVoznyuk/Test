@@ -4,7 +4,7 @@
 			<AddUser v-on:add-user="addUser" />
 		</template>
 		<template slot="right">
-			<Button icon="pi pi-times" class="p-button-danger" />
+			<SearchBar v-on:set-query="setQuery" />
 		</template>
 	</Toolbar>
 </template>
@@ -12,12 +12,14 @@
 <script>
 import Toolbar from 'primevue/toolbar';
 import AddUser from './AddUser.vue';
+import SearchBar from './SearchBar.vue';
 
 export default {
 	name: 'Tool',
 	components: {
 		Toolbar,
-		AddUser
+		AddUser,
+		SearchBar
 	},
 	data() {
 		return {
@@ -28,6 +30,9 @@ export default {
 	methods: {
 		addUser(user) {
 			this.$emit('add-user', user);
+		},
+		setQuery(query) {
+			this.$emit('set-query', query);
 		}
 	}
 };

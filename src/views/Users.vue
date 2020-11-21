@@ -1,6 +1,6 @@
 <template>
 	<div class="container">
-		<Toolbar v-on:add-user="addUser" />
+		<Toolbar v-on:add-user="addUser" v-on:set-query="setQuery" />
 		<Table :users="users" />
 	</div>
 </template>
@@ -22,10 +22,12 @@ export default Vue.extend({
 			.then(json => {
 				this.users = json.users;
 			});
+		this.$emit('show-users');
 	},
 	data() {
 		return {
-			users: []
+			users: [],
+			searchQuery: ''
 		};
 	},
 	methods: {
@@ -37,6 +39,10 @@ export default Vue.extend({
 			};
 			this.users.unshift(newUser);
 		}
+	},
+	setQuery(query) {
+		this.searchQuery = query;
+		console.log(this.searchQuery);
 	}
 });
 </script>

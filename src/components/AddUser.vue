@@ -117,7 +117,7 @@ export default {
 				{ name: 'Admin' },
 				{ name: 'User' },
 				{ name: 'Modeler' },
-				{ name: 'Modeler' }
+				{ name: 'Master' }
 			]
 		};
 	},

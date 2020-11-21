@@ -4,10 +4,10 @@
 		<div class="app__content content">
 			<div class="router-link" v-on:click="showUsers" v-if="!isShowUsers">
 				<router-link to="/users">
-					<!-- Перейти к Table -->
+					Перейти к Table
 				</router-link>
 			</div>
-			<router-view />
+			<router-view v-on:show-users="showUsers" />
 		</div>
 	</div>
 </template>
