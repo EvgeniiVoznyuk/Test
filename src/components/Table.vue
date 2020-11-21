@@ -5,6 +5,8 @@
 		:rows="10"
 		dataKey="id"
 		:rowsPerPageOptions="[10, 20, 50, 100]"
+		:resizableColumns="true"
+		columnResizeMode="expand"
 	>
 		<Column headerStyle="width: 3em">
 			<template #header>
@@ -20,7 +22,6 @@
 					type="checkbox"
 					:value="slotProps.data.id"
 					v-model="selectedUsers"
-					@click="showTest"
 				/>
 			</template>
 		</Column>
@@ -73,9 +74,6 @@ export default Vue.extend({
 			} else {
 				this.selectedUsers = [];
 			}
-		},
-		showTest() {
-			console.log(this.selectedUsers);
 		}
 	}
 });
