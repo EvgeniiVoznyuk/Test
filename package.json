@@ -5,6 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "deploy": "node scripts/gh-pages-deploy.js",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
     "lint": "vue-cli-service lint --quiet --fix",
@@ -43,6 +44,7 @@
   },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^2.3.0",
+    "execa": "latest",
     "@intlify/vue-i18n-loader": "^1.0.0",
     "@types/jest": "^24.0.19",
     "@types/webpack": "^4.4.0",
