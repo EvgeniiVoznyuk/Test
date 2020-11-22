@@ -15,12 +15,7 @@ import i18n from './i18n';
 
 Vue.config.devtools = true;
 
-if (
-	process.env.NODE_ENV !== 'production' &&
-	process.env.VUE_APP_MIRAGE === 'true'
-) {
-	createServer();
-}
+createServer();
 
 // ----PrimeVue----
 Vue.use(ToastService);

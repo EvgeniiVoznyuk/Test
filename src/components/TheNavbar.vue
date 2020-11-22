@@ -1,6 +1,8 @@
 <template>
 	<Toolbar>
-		<template slot="left"></template>
+		<template slot="left">
+			<h1 class="logo">Client-Logo</h1>
+		</template>
 		<template slot="right">
 			<i
 				id="user-icon"
@@ -43,6 +45,12 @@ export default {
 	padding: 8px 16px;
 	border: none;
 	border-radius: unset;
+}
+
+.logo {
+	font-weight: bold;
+	font-size: 20px;
+	text-transform: uppercase;
 }
 
 #user-icon {
