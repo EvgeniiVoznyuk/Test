@@ -1,7 +1,7 @@
 <template>
 	<div class="container">
 		<Toolbar v-on:add-user="addUser" v-on:set-query="setQuery" />
-		<Table :users="filtredUsers()" />
+		<Table :users="filtredUsers()" v-on:delete-users="deleteUsers" />
 	</div>
 </template>
 
@@ -49,6 +49,9 @@ export default Vue.extend({
 					userName.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
 					email.toLowerCase().includes(this.searchQuery.toLowerCase())
 			);
+		},
+		deleteUsers(usersId) {
+			this.users = this.users.filter(user => !usersId.includes(user.id));
 		}
 	}
 });
