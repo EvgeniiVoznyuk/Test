@@ -9,7 +9,7 @@ const routes: Array<RouteConfig> = [
 		component: () => import('../views/Main.vue'),
 		children: [
 			{
-				path: '/',
+				path: '/users',
 				name: 'Table',
 				component: () => import('../views/Users.vue')
 			}
