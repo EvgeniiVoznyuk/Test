@@ -5,6 +5,7 @@ import 'primeicons/primeicons.css';
 import Button from 'primevue/button';
 import Toast from 'primevue/toast';
 import ToastService from 'primevue/toastservice';
+import Dialog from 'primevue/dialog';
 // @ts-ignore
 import createServer from '@/../mirage/server';
 import Vue from 'vue';
@@ -21,9 +22,10 @@ createServer();
 Vue.use(ToastService);
 Vue.component('Button', Button);
 Vue.component('Toast', Toast);
+Vue.component('Dialog', Dialog);
 // ----------------
 
-Vue.config.productionTip = true;
+Vue.config.productionTip = false;
 
 new Vue({
 	router,
