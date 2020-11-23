@@ -23,7 +23,7 @@ Vue.component('Button', Button);
 Vue.component('Toast', Toast);
 // ----------------
 
-Vue.config.productionTip = false;
+Vue.config.productionTip = true;
 
 new Vue({
 	router,
