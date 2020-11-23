@@ -6,6 +6,7 @@ import Button from 'primevue/button';
 import Toast from 'primevue/toast';
 import ToastService from 'primevue/toastservice';
 import Dialog from 'primevue/dialog';
+import DataTable from 'primevue/datatable';
 // @ts-ignore
 import createServer from '@/../mirage/server';
 import Vue from 'vue';
@@ -23,6 +24,7 @@ Vue.use(ToastService);
 Vue.component('Button', Button);
 Vue.component('Toast', Toast);
 Vue.component('Dialog', Dialog);
+Vue.component('DataTable', DataTable);
 // ----------------
 
 Vue.config.productionTip = false;
