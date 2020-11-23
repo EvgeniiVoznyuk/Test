@@ -90,7 +90,7 @@
 </template>
 
 <script>
-import SplitButton from 'primevue/splitbutton';
+// import SplitButton from 'primevue/splitbutton';
 import Dialog from 'primevue/dialog';
 import InputText from 'primevue/inputtext';
 import Dropdown from 'primevue/dropdown';
@@ -98,7 +98,6 @@ import Dropdown from 'primevue/dropdown';
 export default {
 	name: 'AddUser',
 	components: {
-		SplitButton,
 		Dialog,
 		InputText,
 		Dropdown
